@@ -29,8 +29,8 @@ public class UserController {
     @PostMapping("/login")
     public String handleLogin(@RequestParam String login, Model model, HttpSession session) {
         Users userFound = usersService.getUserByLogin(login);
-        System.out.println(userFound.getLogin());
         if (userFound != null) {
+            System.out.println(userFound.getLogin());
             session.setAttribute("user",userFound);
             return "redirect:/home"; // Если пользователь найден, перенаправляем на страницу успешной авторизации
         } else {
