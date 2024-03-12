@@ -27,10 +27,10 @@
     </thead>
     <tbody>
     <tr th:each="spaceship,i : ${spaceships}" style="cursor: pointer"  th:onclick="'rowClickedBuy(\'' + ${spaceship.id} + '\');'">
-      <td th:text="${model.toolName}"></td>
+      <td th:text="${model.shipName}"></td>
       <td th:text="${spaceship.speed}"></td>
       <td th:text="${spaceship.color}"></td>
-      <td th:text="${model.toolClass}"></td>
+      <td th:text="${model.shipClass}"></td>
       <td th:text="${sellObjects[i.index].cost}"></td>
       <td th:text="${sellObjects[i.index].usersByUserId.login}"></td>
     </tr>
