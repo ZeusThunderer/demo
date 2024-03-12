@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modules</title>
+</head>
+<body>
+<a href="/home"><button>Home</button></a>
+<h2>Modules</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Module Name</th>
+        <th>Module Class</th>
+        <th>Module Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="module : ${sModuleList}">
+        <td th:text="${module.id}"></td>
+        <td th:text="${module.moduleName}"></td>
+        <td th:text="${module.moduleClass}"></td>
+        <td th:text="${module.moduleDesc}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

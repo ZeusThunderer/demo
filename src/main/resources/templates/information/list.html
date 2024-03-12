@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Information</title>
+</head>
+<body>
+<a href="/home"><button>Home</button></a>
+<h2>Information</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Content</th>
+    <th>Is Legal</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="info : ${informationList}" >
+    <td th:text="${info.id}"></td>
+    <td th:text="${info.content}"></td>
+    <td th:text="${info.legal}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+<script>
+
+</script>
+</html>

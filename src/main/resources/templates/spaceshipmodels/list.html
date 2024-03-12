@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spaceship Models</title>
+</head>
+<body>
+<a href="/home"><button>Home</button></a>
+<h2>Spaceships Models</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Ship Name</th>
+        <th>Ship Class</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="spaceshipModel : ${spaceshipModels}" style="cursor: pointer"  th:onclick="'rowClicked(\'' + ${spaceshipModel.id} + '\');'">
+        <td th:text="${spaceshipModel.shipName}"></td>
+        <td th:text="${spaceshipModel.shipClass}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+    function rowClicked(id) {
+        document.location.href = '/spaceshipmodels/spaceships?id='+id;
+    }
+</script>
+</html>

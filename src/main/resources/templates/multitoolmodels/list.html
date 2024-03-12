@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Multitool Models</title>
+</head>
+<body>
+<a href="/home"><button>Home</button></a>
+<h2>Multitool Models</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Tool Name</th>
+        <th>Tool Class</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="multitoolModel : ${multitoolModels}" style="cursor: pointer"  th:onclick="'rowClicked(\'' + ${multitoolModel.id} + '\');'">
+        <td th:text="${multitoolModel.toolName}"></td>
+        <td th:text="${multitoolModel.toolClass}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+function rowClicked(id) {
+    document.location.href = '/multitoolmodels/multitools?id='+id;
+}
+</script>
+</html>

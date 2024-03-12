@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spaceships</title>
+  <style>
+    .column {
+      display: inline-block;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+<a href="/home"><button>Home</button></a>
+<a th:onclick="'requestModel(\'' + ${model.id} + '\');'"><button>Request this model</button></a>
+<h2>Multitools</h2>
+<div class="column">
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Damage</th>
+      <th>Color</th>
+      <th>Class</th>
+      <th>Cost</th>
+      <th>Seller</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="spaceship,i : ${spaceships}" style="cursor: pointer"  th:onclick="'rowClickedBuy(\'' + ${spaceship.id} + '\');'">
+      <td th:text="${model.toolName}"></td>
+      <td th:text="${spaceship.speed}"></td>
+      <td th:text="${spaceship.color}"></td>
+      <td th:text="${model.toolClass}"></td>
+      <td th:text="${sellObjects[i.index].cost}"></td>
+      <td th:text="${sellObjects[i.index].usersByUserId.login}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="column">
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Damage</th>
+      <th>Color</th>
+      <th>Class</th>
+      <th>Cost</th>
+      <th>Requester</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="spaceship_for_requsets,i : ${spaceships_for_request}">
+      <td th:text="${model.shipName}"></td>
+      <td th:text="${spaceship_for_requsets.speed}"></td>
+      <td th:text="${spaceship_for_requsets.color}"></td>
+      <td th:text="${model.shipClass}"></td>
+      <td th:text="${requests[i.index].cost}"></td>
+      <td th:text="${requests[i.index].usersByUserId.login}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+  function rowClickedBuy(id) {
+    document.location.href = '/market/buy?type=' + 'SHIP' + '&id=' + id
+  }
+  function  requestModel(id){
+    document.location.href = '/market/request?type=' + 'SHIP' + '&id=' + id
+  }
+</script>
+</html>
